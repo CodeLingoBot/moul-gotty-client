@@ -23,6 +23,7 @@ import (
 // method in case its detach escape sequence is read.
 type EscapeError struct{}
 
+// Error is a function.
 func (EscapeError) Error() string {
 	return "read escape sequence"
 }
@@ -46,6 +47,7 @@ func NewEscapeProxy(r io.Reader, escapeKeys []byte) io.Reader {
 	}
 }
 
+// Read is a function.
 func (r *escapeProxy) Read(buf []byte) (int, error) {
 	nr, err := r.r.Read(buf)
 
